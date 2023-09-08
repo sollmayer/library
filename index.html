@@ -9,26 +9,32 @@
 </head>
 <body>
     <h1>Library</h1>
-    <form action="#">
-        <div>
-            <label for="bookName">Book Name:</label>
-            <input type = "text" id ="bookName" placeholder="Name"><br><br>
-        </div>
-        <div>
-            <label for="author">Author</label>
-            <input type="text" id="author" placeholder="Author">
-        </div>
-        <div>
-            <label for="pages">Number Of Pages</label>
-            <input type="number" id="pages" placeholder="pages">
-        </div>
-        <div>
-            <label for="status">Read</label>
-            <input type="checkbox" id="status">
-        </div>
-        <button type="submit" id="addBook">Add</button>
-    </form>
-
+    <dialog id="form_dialog">
+        <form action="#">
+            <div>
+                <label for="bookName">Book Name:</label>
+                <input type = "text" id ="bookName" placeholder="Name"><br><br>
+            </div>
+            <div>
+                <label for="author">Author</label>
+                <input type="text" id="author" placeholder="Author">
+            </div>
+            <div>
+                <label for="pages">Number Of Pages</label>
+                <input type="number" id="pages" placeholder="pages">
+            </div>
+            <div>
+                <label for="status">Read</label>
+                <input type="checkbox" id="status">
+            </div>
+            <button id="cancel_btn" formmethod="dialog">Cancel</button>
+            <button id="addBook_btn">Add</button>
+        </form>
+    </dialog>
+    <div>
+        <button id='showForm'>Add Book</button>
+    </div>
+    <output></output>
     <div class="books">
         
     </div>
