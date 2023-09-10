@@ -6,3 +6,8 @@
 .books div {
     border: 2px solid black;
 }
+
+button {
+    width: 6rem;
+    height: 2rem;
+}
