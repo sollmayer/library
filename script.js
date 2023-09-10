@@ -14,15 +14,19 @@ function Book(title, author, pages, status) {
     this.author = author;
     this.pages = pages;
     this.status = status;
+    
+    this.changeStatus = () => {
+        this.status = this.status === "read" ? "not read" : "read";
+    }
 }
 
 function addBookToLibrary() {
     let bookTitle = document.querySelector("#bookName").value;
     let bookAuthor = document.querySelector("#author").value;
     let bookPages = document.querySelector("#pages").value;
-    let bookStatus = document.querySelector("#status").value;
+    let bookStatus = document.querySelector("#status").checked;
 
-    let book = new Book(bookTitle, bookAuthor, bookPages, bookStatus);
+    let book = new Book(bookTitle, bookAuthor, bookPages, bookStatus?"read":"not read");
     
     if(!myLibrary.some(item => item.title === book.title)){
         myLibrary.push(book);
@@ -49,6 +53,7 @@ function showBooks(){
         let pages = document.createElement('p');
         let status = document.createElement('p');
         let delete_btn = document.createElement('button'); 
+        let change_status = document.createElement('button'); 
 
         title.textContent = book.title;
         author.textContent = book.author;
@@ -56,12 +61,16 @@ function showBooks(){
         status.textContent = book.status;
         delete_btn.textContent = 'delete';
         delete_btn.setAttribute(`data-title`,book.title);
-
+        change_status.setAttribute(`data-status`,book.status);
+        change_status.textContent = book.status=="read" ? "READ":"NOT READ";
+        change_status.classList.add('change_status');
+        
         div.appendChild(title);
         div.appendChild(author);
         div.appendChild(pages);
         div.appendChild(status);
         div.appendChild(delete_btn);
+        div.appendChild(change_status);
         books_div.appendChild(div);
     }
     addButtons();
@@ -69,10 +78,19 @@ function showBooks(){
 }
 
 function addButtons(){
-    document.querySelectorAll('.books div button').forEach(btn => {
+    document.querySelectorAll('.books div button[data-title]').forEach(btn => {
         btn.addEventListener('click',()=>{
             console.log("delete_btn clicked", btn.dataset.title)
             myLibrary = myLibrary.filter(book => book.title !== btn.dataset.title);
+            showBooks();
+        })
+    })
+    document.querySelectorAll('.change_status').forEach(btn => {
+        btn.addEventListener('click', ()=>{
+            console.log('changeStatus')
+            const book = myLibrary.find(book => book.title === btn.parentElement.firstChild.textContent)
+            console.log(book);
+            book.changeStatus();
             showBooks();
         })
     })
