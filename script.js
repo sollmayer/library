@@ -56,14 +56,15 @@ function showBooks(){
         let author = document.createElement('p');
         let pages = document.createElement('p');
         let status = document.createElement('p');
+        let btn_div = document.createElement('div');
         let delete_btn = document.createElement('button'); 
         let change_status = document.createElement('button'); 
 
         title.textContent = book.title;
-        author.textContent = book.author;
-        pages.textContent = book.pages;
+        author.textContent = `by ${book.author}`;
+        pages.textContent = book.pages + ' pages';
         status.textContent = book.status;
-        delete_btn.textContent = 'delete';
+        delete_btn.textContent = 'Delete';
         delete_btn.setAttribute(`data-title`,book.title);
         change_status.setAttribute(`data-status`,book.status);
         change_status.textContent = book.status=="read" ? "READ":"NOT READ";
@@ -73,8 +74,9 @@ function showBooks(){
         div.appendChild(author);
         div.appendChild(pages);
         div.appendChild(status);
-        div.appendChild(delete_btn);
-        div.appendChild(change_status);
+        btn_div.appendChild(delete_btn);
+        btn_div.appendChild(change_status);
+        div.appendChild(btn_div);
         books_div.appendChild(div);
     }
     addButtons();
@@ -92,7 +94,7 @@ function addButtons(){
     document.querySelectorAll('.change_status').forEach(btn => {
         btn.addEventListener('click', ()=>{
             console.log('changeStatus')
-            const book = myLibrary.find(book => book.title === btn.parentElement.firstChild.textContent)
+            const book = myLibrary.find(book => book.title === btn.parentElement.parentElement.firstChild.textContent)
             console.log(book);
             book.changeStatus();
             showBooks();
