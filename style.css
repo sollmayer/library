@@ -1,17 +1,49 @@
+body{
+    background-color: #e2e8f0;
+
+}
 .books {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
-}
-.books div {
-    border: 2px solid black;
+    padding: 1rem;
 }
 
-button {
+.books>div {
+    border: none;
+    padding: 2rem 2.2rem;
+    border-radius: 0.8rem;
+    /* background-color: white; */
+    background-image: linear-gradient( to right, #f0b429, #f0b429 2%, #ffffff 2%, #ffffff 100%, #ffffff 100% );
+    box-shadow: 1px 2px 5px 0px #bababa;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.2rem;
+    gap:1rem;
+}
+.books div p {
+    padding: 0;
+    margin: 0;
+    align-self: center;
+}
+.books div p:nth-child(1){
+    font-weight: 600;
+    font-size: 1.4rem;
+}
+.books div div{
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+}
+.books div button {
+    background-color: rgb(47, 113, 145);
+    border: none;
+    border-radius: 0.3rem;
+    color: white;
+    font-weight: 700;
+    height: 2.2rem;
     width: 6rem;
-    height: 2rem;
 }
-
 #form_dialog {
     border:none;
     border-radius: 0.4rem;
@@ -35,13 +67,14 @@ form div{
     gap: 1rem;
     justify-content: center;
 }
-form button {
+form button, #showForm {
     background-color: rgb(47, 113, 145);
     border: none;
     border-radius: 0.3rem;
     color: white;
     font-weight: 700;
     height: 2.2rem;
+    width: 6rem;
 }
 form input {
     height: 2.4rem;
@@ -55,3 +88,4 @@ form input {
 form input[type='checkbox'] {
     width: 1.1rem;
 }
+
