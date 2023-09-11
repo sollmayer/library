@@ -5,7 +5,15 @@ const showForm = document.querySelector('#showForm')
 const formDialog = document.querySelector("#form_dialog");
 const outputBox = document.querySelector("output");
 const addBookBtn = formDialog.querySelector("#addBook_btn");
+const cancel_btn = formDialog.querySelector("#cancel_btn");
 
+cancel_btn.onclick = ()=> formDialog.close()
+document.querySelector('#book_form').addEventListener('submit', (e)=>{
+    e.preventDefault();
+    addBookToLibrary();
+    formDialog.close();
+    showBooks();
+})
 let del_btn;
 showForm.addEventListener('click', ()=>formDialog.showModal())
 
@@ -25,7 +33,6 @@ function addBookToLibrary() {
     let bookAuthor = document.querySelector("#author").value;
     let bookPages = document.querySelector("#pages").value;
     let bookStatus = document.querySelector("#status").checked;
-
     let book = new Book(bookTitle, bookAuthor, bookPages, bookStatus?"read":"not read");
     
     if(!myLibrary.some(item => item.title === book.title)){
@@ -35,9 +42,6 @@ function addBookToLibrary() {
 
 
 function clearLibrary(){
-    // while (books_div.firstChild) {
-    //     books_div.removeChild(books_div.lastChild);
-    // }
     document.querySelector('.books').innerHTML = '';
 
 }
