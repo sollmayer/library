@@ -11,3 +11,47 @@ button {
     width: 6rem;
     height: 2rem;
 }
+
+#form_dialog {
+    border:none;
+    border-radius: 0.4rem;
+    width: 15rem;
+    /* background-color: rgb(217, 217, 217); */
+    box-shadow: 0px 2px 5px 3px rgb(169, 169, 169);
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+    gap: 1rem;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+form div{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+}
+form button {
+    background-color: rgb(47, 113, 145);
+    border: none;
+    border-radius: 0.3rem;
+    color: white;
+    font-weight: 700;
+    height: 2.2rem;
+}
+form input {
+    height: 2.4rem;
+    align-items: center;
+    border: none;
+    background-color: rgb(211, 245, 245);
+    border-radius: 0.3rem;
+    font-size: 1rem;
+    padding-left: 0.5rem;
+}
+form input[type='checkbox'] {
+    width: 1.1rem;
+}
