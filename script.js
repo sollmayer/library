@@ -4,10 +4,14 @@ const books_div = document.querySelector('.books');
 const showForm = document.querySelector('#showForm')
 const formDialog = document.querySelector("#form_dialog");
 const outputBox = document.querySelector("output");
-const addBookBtn = formDialog.querySelector("#addBook_btn");
+// const addBookBtn = formDialog.querySelector("#addBook_btn");
 const cancel_btn = formDialog.querySelector("#cancel_btn");
 
-cancel_btn.onclick = ()=> formDialog.close()
+cancel_btn.onclick = (e)=> {
+    e.preventDefault();
+    formDialog.close()
+}
+
 document.querySelector('#book_form').addEventListener('submit', (e)=>{
     e.preventDefault();
     addBookToLibrary();
@@ -17,17 +21,27 @@ document.querySelector('#book_form').addEventListener('submit', (e)=>{
 let del_btn;
 showForm.addEventListener('click', ()=>formDialog.showModal())
 
-function Book(title, author, pages, status) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.status = status;
+// function Book(title, author, pages, status) {
+//     this.title = title;
+//     this.author = author;
+//     this.pages = pages;
+//     this.status = status
     
-    this.changeStatus = () => {
-        this.status = this.status === "read" ? "not read" : "read";
+//     this.changeStatus = () => {
+//         this.status = this.status === "read" ? "not read" : "read";
+//     }
+// }
+class Book {
+    constructor(title,author,pages,status) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.status = status;
+    }
+    changeStatus = () => {
+        this.status =  this.status === "read"? "not read": "read";
     }
 }
-
 function addBookToLibrary() {
     let bookTitle = document.querySelector("#bookName").value;
     let bookAuthor = document.querySelector("#author").value;
@@ -103,9 +117,3 @@ function addButtons(){
 
 }
 
-addBookBtn.addEventListener('click', (e)=>{
-    e.preventDefault();
-    addBookToLibrary();
-    formDialog.close();
-    showBooks();
-})
